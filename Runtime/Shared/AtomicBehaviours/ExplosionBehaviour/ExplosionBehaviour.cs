@@ -1,7 +1,7 @@
-using Shared.Components;
+using DemGFramework.Shared.Components;
 using UnityEngine;
 
-namespace Shared.Behaviours.Explosion
+namespace DemGFramework.Shared.Behaviours
 {  
     public class Explosion : MonoBehaviour
     {

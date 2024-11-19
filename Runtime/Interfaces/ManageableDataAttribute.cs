@@ -1,6 +1,6 @@
 using System;
 
-namespace Shared.Classes {
+namespace DemGFramework.Shared.Classes {
 
     public class ManageableDataAttribute : Attribute {
 

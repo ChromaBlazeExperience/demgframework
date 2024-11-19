@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DemGFramework.Configuration;
 using UnityEngine;
 
 namespace DemGFramework.Core {

@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using UnityEngine;
 
-namespace Shared.Components {
+namespace DemGFramework.Shared.Components {
     public interface IDamageble
     {
         void StartApplyDamage(object packet);

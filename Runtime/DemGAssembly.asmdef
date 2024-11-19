@@ -1,6 +1,6 @@
 {
     "name": "DemGAssembly",
-    "rootNamespace": "",
+    "rootNamespace": "DemG",
     "references": [
         "Unity.InputSystem",
         "Unity.VisualScripting.Core"

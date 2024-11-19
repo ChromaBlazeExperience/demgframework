@@ -1,9 +1,9 @@
 using System;
 using static DemGFramework.Utility.Utility;
 
-namespace Shared.Components {
+namespace DemGFramework.Shared.Components {
     [Serializable]
-    public class HealthArmorManager
+    public class HealthArmorBase
     {
         public float health;
         public float maxHealth;
@@ -15,7 +15,7 @@ namespace Shared.Components {
 
         public VoidAction OnDeath;
 
-        public HealthArmorManager(float health, float maxHealth, float armor, float maxArmor)
+        public HealthArmorBase(float health, float maxHealth, float armor, float maxArmor)
         {
             this.health = health;
             this.maxHealth = maxHealth;

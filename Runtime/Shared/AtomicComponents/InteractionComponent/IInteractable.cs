@@ -1,4 +1,4 @@
-namespace Shared.Components {
+namespace DemGFramework.Shared.Components {
     public interface IInteractable
     {}
 }

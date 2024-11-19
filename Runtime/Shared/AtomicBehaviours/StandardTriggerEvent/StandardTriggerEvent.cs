@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Shared.Behaviours {
+namespace DemGFramework.Shared.Behaviours {
 
 
     public class StandardTriggerEvent: MonoBehaviour {

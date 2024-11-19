@@ -1,4 +1,4 @@
-namespace DemGFramework.Core
+namespace DemGFramework.Configuration
 {
     public enum ComponentType
     {
