@@ -1,4 +1,4 @@
-using Shared.Classes;
+using DemGFramework.Shared.Classes;
 using Sirenix.OdinInspector.Editor;
 using System;
 using System.Linq;
