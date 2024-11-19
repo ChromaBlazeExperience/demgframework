@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "displayName": "DemGFramework",
     "description": "Chroma Blaze Game Framework.",
-    "unity": "2022.3.44f1",
+    "unity": "2022.3",
     "author": {
         "name": "Chroma Blaze Experience",
         "email": "chromablazeexperience@gmail.com"
