@@ -20,5 +20,8 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/yourcompany/yourpackage.git"
+    },
+    "scripts": {
+        "release": "git add . && git commit -m \"Modified files\" && npm version patch -m \"New release %s\" && git push && git push --tags"
     }
 }
