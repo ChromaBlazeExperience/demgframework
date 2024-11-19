@@ -1,0 +1,1 @@
+In questo file aggiungerai i componenti ogni qualvolta ne devi creare uno nuovo

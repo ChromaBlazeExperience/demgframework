@@ -1,0 +1,34 @@
+using UnityEngine;
+
+namespace NAMESPACE NAME {
+    public class ClassName : BaseMono<ScriptableObjectName> {
+
+        #region LOGIC VARIABLES
+
+        #endregion 
+
+        #region GETTERS
+
+        #endregion
+
+        #region EVENTS
+
+        #endregion
+
+        #region LIFECYCLE 
+
+        #endregion
+
+        #region LOGIC METHODS
+
+        #endregion
+
+        #region SETTERS
+
+        #endregion
+
+        #region DEBUG
+
+        #endregion
+    }
+}
