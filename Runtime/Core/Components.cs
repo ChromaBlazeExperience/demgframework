@@ -8,7 +8,7 @@ namespace DemGFramework.Core {
     [Serializable]
     public class Components {
         public List<Component> components = new List<Component>();
-        public void OnOff(ComponentType type, bool value)
+        public void OnOff(string type, bool value)
         {
             Component component = components.Find(c => c.type == type);
             if (component != null)
@@ -53,14 +53,14 @@ namespace DemGFramework.Core {
                 (c.script as BaseEntityComponent<T, Y>).LoadFromData();
             }
         }
-        public void ReinitializeDataOfComponent<T, Y>(ComponentType type, T data) {
+        public void ReinitializeDataOfComponent<T, Y>(string type, T data) {
             Component component = components.Find(c => c.type == type);
             if (component != null)
             {
                 (component.script as BaseEntityComponent<T, Y>).LoadNewData(data);
             }
         }
-        public T GetComponent<T>(ComponentType type) {
+        public T GetComponent<T>(string type) {
             Component component = components.Find(c => c.type == type);
             if (component != null)
             {
@@ -83,9 +83,9 @@ namespace DemGFramework.Core {
     }
 
     [Serializable]
-    public class Component
+    public abstract class Component
     {
-        public ComponentType type;
+        public string type;
         public MonoBehaviour script;
         public bool defaultStateValue;
     }

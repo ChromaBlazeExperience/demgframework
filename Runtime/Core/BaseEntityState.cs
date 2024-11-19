@@ -21,10 +21,10 @@ namespace DemGFramework.Core
         public virtual void DefaultSetup<Y>(Y state) {
             components.DefaultSetup<T, Y>(properties, state);
         }
-        public void SetNewConfigurationFor<Y>(ComponentType type, T data) {
+        public void SetNewConfigurationFor<Y>(string type, T data) {
             components.ReinitializeDataOfComponent<T, Y>(type, data);
         }
-        public void ResetConfigurationAtDefaultFor<Y>(ComponentType type) {
+        public void ResetConfigurationAtDefaultFor<Y>(string type) {
             components.ReinitializeDataOfComponent<T, Y>(type, properties);
         }
     }
