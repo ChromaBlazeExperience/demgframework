@@ -83,7 +83,7 @@ namespace DemGFramework.Core {
     }
 
     [Serializable]
-    public abstract class Component
+    public class Component
     {
         public string type;
         public MonoBehaviour script;
