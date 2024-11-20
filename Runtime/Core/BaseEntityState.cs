@@ -1,5 +1,6 @@
 using System;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DemGFramework.Core
@@ -21,10 +22,10 @@ namespace DemGFramework.Core
             
         }
         public virtual void DefaultSetup<Y>(Y state) {
-            bool useLogic = scripts.TryGetComponent<BaseEntityLogic<T, BaseEntityState<T>>>(out var logic);
+            bool useLogic = scripts.TryGetComponent<BaseEntityLogic<Unknown, Unknown>>(out var logic);
             if (useLogic) {
                 Debug.Log("Using logic");
-                logic.SetStateAndProperties(properties, this);
+                logic.SetStateAndProperties(properties as Unknown, this as Unknown);
             }
             else Debug.Log("No logic");
             components.DefaultSetup<T, Y>(properties, state);
