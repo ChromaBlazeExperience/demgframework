@@ -1,6 +1,8 @@
+
+
 namespace DemGFramework.Shared.Components
 {
-    public class InventoryManager
+    public class RBJumpGravityManager
     {
         
     }
