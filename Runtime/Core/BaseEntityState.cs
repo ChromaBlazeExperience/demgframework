@@ -22,12 +22,7 @@ namespace DemGFramework.Core
             
         }
         public virtual void DefaultSetup<Y>(Y state) {
-            bool useLogic = scripts.TryGetComponent<BaseEntityLogic<Unknown, Unknown>>(out var logic);
-            if (useLogic) {
-                Debug.Log("Using logic");
-                logic.SetStateAndProperties(properties as Unknown, this as Unknown);
-            }
-            else Debug.Log("No logic");
+            scripts.SendMessage("SetStateAndProperties", new object[] {properties, this});
             components.DefaultSetup<T, Y>(properties, state);
         }
         public void SetNewConfigurationFor<Y>(string type, T data) {
