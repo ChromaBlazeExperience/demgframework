@@ -26,6 +26,7 @@ namespace DemGFramework.Core
                 Debug.Log("Using logic");
                 logic.SetStateAndProperties(properties, this);
             }
+            else Debug.Log("No logic");
             components.DefaultSetup<T, Y>(properties, state);
         }
         public void SetNewConfigurationFor<Y>(string type, T data) {
