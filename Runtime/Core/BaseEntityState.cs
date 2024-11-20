@@ -17,6 +17,7 @@ namespace DemGFramework.Core
         public virtual void Start() {
             bool useLogic = scripts.TryGetComponent<BaseEntityLogic<T, BaseEntityState<T>>>(out var logic);
             if (useLogic) {
+                Debug.Log("Using logic");
                 logic.SetStateAndProperties(properties, this);
             }
         }

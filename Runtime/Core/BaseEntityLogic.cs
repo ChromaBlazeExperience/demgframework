@@ -4,8 +4,8 @@ namespace DemGFramework.Core
 {
     public class BaseEntityLogic<TState, TProperty> : MonoBehaviour
     {
-        public TState state;
-        public TProperty properties;
+        protected TState state;
+        protected TProperty properties;
         
         public void SetStateAndProperties(TState state, TProperty properties)
         {
