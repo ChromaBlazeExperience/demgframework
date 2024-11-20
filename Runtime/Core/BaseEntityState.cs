@@ -15,17 +15,17 @@ namespace DemGFramework.Core
         public Components components = new Components();
         
         public virtual void Start() {
-            bool useLogic = scripts.TryGetComponent<BaseEntityLogic<T, BaseEntityState<T>>>(out var logic);
-            if (useLogic) {
-                Debug.Log("Using logic");
-                logic.SetStateAndProperties(properties, this);
-            }
+            
         }
         public virtual void Update() {
             
         }
         public virtual void DefaultSetup<Y>(Y state) {
-            Start();
+            bool useLogic = scripts.TryGetComponent<BaseEntityLogic<T, BaseEntityState<T>>>(out var logic);
+            if (useLogic) {
+                Debug.Log("Using logic");
+                logic.SetStateAndProperties(properties, this);
+            }
             components.DefaultSetup<T, Y>(properties, state);
         }
         public void SetNewConfigurationFor<Y>(string type, T data) {
