@@ -7,10 +7,10 @@ namespace DemGFramework.Core
         protected TState state;
         protected TProperty properties;
         
-        public void SetStateAndProperties(TState state, TProperty properties)
+        public void SetStateAndProperties(object[] data)
         {
-            this.state = state;
-            this.properties = properties;
+            this.state = (TState)data[0];
+            this.properties = (TProperty)data[1];
         }
     }
 }

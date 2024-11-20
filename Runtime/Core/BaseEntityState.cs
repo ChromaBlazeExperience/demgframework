@@ -22,7 +22,7 @@ namespace DemGFramework.Core
             
         }
         public virtual void DefaultSetup<Y>(Y state) {
-            scripts.SendMessage("SetStateAndProperties", new object[] {properties, this});
+            scripts.SendMessage("SetStateAndProperties", new object[] {this, properties});
             components.DefaultSetup<T, Y>(properties, state);
         }
         public void SetNewConfigurationFor<Y>(string type, T data) {
