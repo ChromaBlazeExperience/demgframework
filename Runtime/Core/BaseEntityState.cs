@@ -1,5 +1,6 @@
 using System;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace DemGFramework.Core
 {
@@ -9,10 +10,15 @@ namespace DemGFramework.Core
         [TabGroup("Components")]
         public T properties;
         [TabGroup("Components")]
+        public GameObject scripts;
+        [TabGroup("Components")]
         public Components components = new Components();
-
+        
         public virtual void Start() {
-
+            bool useLogic = scripts.TryGetComponent<BaseEntityLogic<T, BaseEntityState<T>>>(out var logic);
+            if (useLogic) {
+                logic.SetStateAndProperties(properties, this);
+            }
         }
         public virtual void Update() {
             
