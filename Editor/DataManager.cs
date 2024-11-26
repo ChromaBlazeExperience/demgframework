@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using UnityEditor;
 
-namespace Editor.DataManager {
+namespace DemGFramework.Editor {
     public class DataManager : OdinMenuEditorWindow
     {
         private static Type[] typesToDisplay = TypeCache.GetTypesWithAttribute<ManageableDataAttribute>()

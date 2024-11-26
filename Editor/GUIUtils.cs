@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using Sirenix.Utilities.Editor;
 
-namespace Editor {
+namespace DemGFramework.Editor {
     public static class GUIUtils
     {
         public static bool SelectButtonList(ref Type selectedType, Type[] typesToDisplay)

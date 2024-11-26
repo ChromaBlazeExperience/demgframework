@@ -13,7 +13,6 @@ namespace DemGFramework.Core
         public GameObject scripts;
         [TabGroup("Components")]
         public Components components = new Components();
-
         private Dictionary<string, object> properties = new Dictionary<string, object>();
         
         public virtual void Start() {
