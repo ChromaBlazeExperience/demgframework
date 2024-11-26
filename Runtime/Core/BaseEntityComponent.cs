@@ -5,9 +5,9 @@ using Data = System.Collections.Generic.Dictionary<string, object>;
 
 namespace DemGFramework.Core
 {
-    public class BaseEntityComponent<Y> : MonoBehaviour {
+    public class BaseEntityComponent<State> : MonoBehaviour {
         protected Dictionary<string, object> data;
-        protected Y state;
+        protected State state;
         public bool readyToWork = false;
         public bool canPlay = false;
 
@@ -23,10 +23,10 @@ namespace DemGFramework.Core
         #endregion
 
         #region SETTERS
-            public void SetState(Y state) {
+            public void SetState(State state) {
                 this.state = state;
             }
-            public virtual void Initialize(Data data, Y state, object extra = null) {
+            public virtual void Initialize(Data data, State state, object extra = null) {
                 SetState(state);
                 SetNewData(data);
                 LoadFromData();
