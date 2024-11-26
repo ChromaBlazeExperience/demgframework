@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
+
+using Data = System.Collections.Generic.Dictionary<string, object>;
 
 namespace DemGFramework.Core
 {
-    public class BaseEntityComponent<T, Y> : MonoBehaviour {
-        protected T data;
+    public class BaseEntityComponent<Y> : MonoBehaviour {
+        protected Dictionary<string, object> data;
         protected Y state;
         public bool readyToWork = false;
         public bool canPlay = false;
@@ -23,16 +26,16 @@ namespace DemGFramework.Core
             public void SetState(Y state) {
                 this.state = state;
             }
-            public virtual void Initialize(T data, Y state, object extra = null) {
+            public virtual void Initialize(Data data, Y state, object extra = null) {
                 SetState(state);
-                SetScriptableObject(data);
+                SetNewData(data);
                 LoadFromData();
             }
-            public virtual void LoadNewData(T data) {
-                SetScriptableObject(data);
+            public virtual void LoadNewData(Data data) {
+                SetNewData(data);
                 LoadFromData();
             }
-            public virtual void SetScriptableObject(T data) {
+            public virtual void SetNewData(Data data) {
                 this.data = data;
             }
             public virtual void LoadFromData() {

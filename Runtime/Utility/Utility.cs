@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -24,24 +25,35 @@ namespace DemGFramework.Utility
             return Color.Lerp(Color.black, Color.white, v);
         }
 
-#if UNITY_EDITOR
-
-        static MethodInfo _clearConsoleMethod;
-        static MethodInfo clearConsoleMethod {
-            get {
-                if (_clearConsoleMethod == null) {
-                    Assembly assembly = Assembly.GetAssembly (typeof(SceneView));
-                    Type logEntries = assembly.GetType ("UnityEditor.LogEntries");
-                    _clearConsoleMethod = logEntries.GetMethod ("Clear");
+        #if UNITY_EDITOR
+            static MethodInfo _clearConsoleMethod;
+            static MethodInfo clearConsoleMethod {
+                get {
+                    if (_clearConsoleMethod == null) {
+                        Assembly assembly = Assembly.GetAssembly (typeof(SceneView));
+                        Type logEntries = assembly.GetType ("UnityEditor.LogEntries");
+                        _clearConsoleMethod = logEntries.GetMethod ("Clear");
+                    }
+                    return _clearConsoleMethod;
                 }
-                return _clearConsoleMethod;
             }
-        }
 
-        public static void ClearLogConsole() {
-            clearConsoleMethod.Invoke (new object (), null);
+            public static void ClearLogConsole() {
+                    clearConsoleMethod.Invoke (new object (), null);
+                }
+        #endif
+
+        public static Dictionary<string, object> ToDictionary(object obj)
+        {
+            if(obj is Dictionary<string, object>) return obj as Dictionary<string, object>;
+            
+            var dict = new Dictionary<string, object>();
+            foreach (FieldInfo field in obj.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance))
+            {
+                dict[field.Name] = field.GetValue(obj);
+            }
+            return dict;
         }
-#endif
 
     }
 }
