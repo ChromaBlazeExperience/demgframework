@@ -14,6 +14,9 @@ namespace DemGFramework.Core
         [TabGroup("Components")]
         public Components components = new Components();
         private Dictionary<string, object> properties = new Dictionary<string, object>();
+
+        //NOTA: i components sono utili al momento solo per fare il reload delle properties che potremmo automatizzare da codice
+        //prendendo tutti gli entitycomponent in scripts e facendo il load/reload delle properties
         
         public virtual void Initialize<TProperty>(TProperty properties) {
             this.properties = Utility.Utility.ToDictionary(properties);
