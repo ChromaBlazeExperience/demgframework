@@ -6,17 +6,13 @@ namespace DemGFramework.Core
     public class BaseEntityManager<TState, TProperty> : MonoBehaviour
     {
         [TabGroup("Base State")]
-        private TState _baseState;
-        public BaseEntityState baseState => _baseState as BaseEntityState;
+        public TState state;
 
         [TabGroup("Components")]
         public TProperty properties;
 
         public virtual void Awake() {
-            baseState.Initialize<TState, TProperty>(_baseState, properties);
-        }
-        public virtual void Update() {
-            baseState.Update();
+            (state as BaseEntityState).Initialize<TState, TProperty>(state, properties);
         }
     }
 }
