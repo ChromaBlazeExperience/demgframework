@@ -6,8 +6,8 @@ namespace DemGFramework.Core
     public class BaseEntityManager<TState, TProperty> : MonoBehaviour
     {
         [TabGroup("Base State")]
-        public TState _baseState;
-        private BaseEntityState baseState => _baseState as BaseEntityState;
+        private TState _baseState;
+        public BaseEntityState baseState => _baseState as BaseEntityState;
 
         [TabGroup("Components")]
         public TProperty properties;
