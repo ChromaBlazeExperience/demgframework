@@ -33,44 +33,44 @@ namespace DemGFramework.Core {
                 c.script.enabled = false;
             }
         }
-        public void DefaultSetup<TState, TProperty>(TState state, TProperty data)
+        public void DefaultSetup<TProperty>(TProperty data)
         {
             Dictionary<string, object> dataCasted = Utility.Utility.ToDictionary(data);
             foreach(Component c in components)
             {
-                (c.script as BaseEntityComponent<TState>).enabled = (c.defaultStateValue);
-                (c.script as BaseEntityComponent<TState>).Initialize(dataCasted, state);
+                (c.script as BaseEntityComponent).enabled = (c.defaultStateValue);
+                (c.script as BaseEntityComponent).Initialize(dataCasted);
             }
             #if UNITY_EDITOR
                 if(components.Count > 0) Debug.Log("Components Setup Completed");
                 else  Debug.LogWarning("Components Setup Failed");
             #endif
         }
-        public void ReloadData<TState>()
+        public void ReloadData()
         {
             foreach(Component c in components)
             {
-                (c.script as BaseEntityComponent<TState>).LoadFromData();
+                (c.script as BaseEntityComponent).LoadFromData();
             }
         }
-        public void ReinitializeDataOfComponent<TState, TProperty>(string type, TProperty data) {
+        public void ReinitializeDataOfComponent<TProperty>(string type, TProperty data) {
             Dictionary<string, object> dataCasted = Utility.Utility.ToDictionary(data);
             Component component = components.Find(c => c.type == type);
             if (component != null)
             {
-                (component.script as BaseEntityComponent<TState>).LoadNewData(dataCasted);
+                (component.script as BaseEntityComponent).LoadNewData(dataCasted);
             }
         }
-        public void CanPlayAllComponent<TState>() {
+        public void CanPlayAllComponent() {
             foreach(Component c in components)
             {
-                (c.script as BaseEntityComponent<TState>).SetCanPlay(true);
+                (c.script as BaseEntityComponent).SetCanPlay(true);
             }
         }
-        public void NotCanPlayAllComponent<TState>() {
+        public void NotCanPlayAllComponent() {
             foreach(Component c in components)
             {
-                (c.script as BaseEntityComponent<TState>).SetCanPlay(false);
+                (c.script as BaseEntityComponent).SetCanPlay(false);
             }
         }
     }

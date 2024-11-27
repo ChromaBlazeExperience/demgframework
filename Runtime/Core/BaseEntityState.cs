@@ -15,18 +15,18 @@ namespace DemGFramework.Core
         public Components components = new Components();
         private Dictionary<string, object> properties = new Dictionary<string, object>();
         
-        public virtual void Initialize<TState, TProperty>(TState state, TProperty properties) {
+        public virtual void Initialize<TProperty>(TProperty properties) {
             this.properties = Utility.Utility.ToDictionary(properties);
-            components.DefaultSetup<TState, TProperty>(state, properties);
+            components.DefaultSetup<TProperty>(properties);
         }
         public virtual void DefaultSetup<TState, TProperty>(TState state, TProperty properties) {
-            components.DefaultSetup<TState, TProperty>(state, properties);
+            components.DefaultSetup<TProperty>(properties);
         }
         public void SetNewConfigurationFor<TState, TProperty>(string type, TProperty data) {
-            components.ReinitializeDataOfComponent<TState, TProperty>(type, data);
+            components.ReinitializeDataOfComponent<TProperty>(type, data);
         }
         public void ResetConfigurationAtDefaultFor<TState, TProperty>(string type, TProperty properties) {
-            components.ReinitializeDataOfComponent<TState, TProperty>(type, properties);
+            components.ReinitializeDataOfComponent<TProperty>(type, properties);
         }
     }
 }
