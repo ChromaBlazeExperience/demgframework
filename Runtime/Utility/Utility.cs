@@ -49,27 +49,49 @@ namespace DemGFramework.Utility
         }
 #endif
 
-        public static Dictionary<string, object> ToDictionary(object obj)
+        private static readonly HashSet<Type> exceptionTypes = new HashSet<Type>
+    {
+        typeof(LayerMask),
+        typeof(AudioClip),
+        // Aggiungi qui altri tipi che vuoi escludere
+    };
+
+        public static Dictionary<string, object> ToDictionary(object obj, HashSet<object> processedObjects = null)
         {
             if (obj == null) return null;
+            if (processedObjects == null)
+                processedObjects = new HashSet<object>();
+
+            if (processedObjects.Contains(obj))
+                return null; // O gestisci come preferisci i riferimenti ciclici
+
+            processedObjects.Add(obj);
+
             if (obj is Dictionary<string, object>) return obj as Dictionary<string, object>;
 
             var dict = new Dictionary<string, object>();
             foreach (FieldInfo field in obj.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance))
             {
                 var fieldValue = field.GetValue(obj);
-                dict[field.Name] = ProcessValue(fieldValue);
+                dict[field.Name] = ProcessValue(fieldValue, processedObjects);
             }
             return dict;
         }
-        private static object ProcessValue(object value)
+
+        private static object ProcessValue(object value, HashSet<object> processedObjects)
         {
             if (value == null)
                 return null;
 
             var type = value.GetType();
 
-            // Gestione dei tipi primitivi e dei tipi di valore comuni
+            // Se il tipo è nelle eccezioni, restituisci il valore così com'è
+            if (exceptionTypes.Contains(type))
+            {
+                return value;
+            }
+
+            // Tipi primitivi e comuni
             if (type.IsPrimitive || value is string || value is decimal || value is DateTime || value is Guid)
             {
                 return value;
@@ -81,13 +103,17 @@ namespace DemGFramework.Utility
                 var list = new List<object>();
                 foreach (var item in enumerable)
                 {
-                    list.Add(ProcessValue(item));
+                    list.Add(ProcessValue(item, processedObjects));
                 }
                 return list;
             }
 
-            // Gestione degli oggetti complessi ricorsivamente
-            return ToDictionary(value);
+            // Evita riferimenti circolari
+            if (processedObjects.Contains(value))
+                return null; // O gestisci come preferisci i riferimenti ciclici
+
+            // Oggetti complessi
+            return ToDictionary(value, processedObjects);
         }
     }
 }
