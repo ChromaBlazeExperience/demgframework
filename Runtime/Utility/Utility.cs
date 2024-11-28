@@ -52,8 +52,6 @@ namespace DemGFramework.Utility
         private static readonly HashSet<Type> exceptionTypes = new HashSet<Type>
     {
         typeof(LayerMask),
-        typeof(AudioClip),
-        // Aggiungi qui altri tipi che vuoi escludere
     };
 
         public static Dictionary<string, object> ToDictionary(object obj, HashSet<object> processedObjects = null)
