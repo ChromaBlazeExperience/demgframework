@@ -54,6 +54,10 @@ namespace DemGFramework.Core {
                 else  Debug.LogWarning("Components Setup Failed");
             #endif
         }
+        public Component GetComponent(string type)
+        {
+            return components.Find(c => c.type == type);
+        }
         public void ReloadData()
         {
             foreach(Component c in components)
