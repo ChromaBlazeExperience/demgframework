@@ -19,6 +19,7 @@ namespace DemGFramework.Core
         //prendendo tutti gli entitycomponent in scripts e facendo il load/reload delle properties .
         
         public virtual void Initialize<TProperty>(TProperty properties) {
+            components.InitializeComponents(scripts);
             this.properties = Utility.Utility.ToDictionary(properties);
             components.DefaultSetup<TProperty>(properties);
         }

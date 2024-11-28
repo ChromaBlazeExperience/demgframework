@@ -7,6 +7,14 @@ namespace DemGFramework.Core {
     [Serializable]
     public class Components {
         public List<Component> components = new List<Component>();
+
+        public void InitializeComponents(GameObject holder) {
+            BaseEntityComponent[] components = holder.GetComponents<BaseEntityComponent>();
+            foreach(BaseEntityComponent c in components)
+            {
+                this.components.Add(new Component { type = c.GetType().Name, script = c });
+            }
+        }
         public void OnOff(string type, bool value)
         {
             Component component = components.Find(c => c.type == type);
@@ -24,7 +32,7 @@ namespace DemGFramework.Core {
         public void ActivateByDefault() {
             foreach(Component c in components)
             {
-                c.script.enabled = c.defaultStateValue;
+                c.script.enabled = true;
             }
         }
         public void DeactiveAllComponents() {
@@ -38,8 +46,8 @@ namespace DemGFramework.Core {
             Dictionary<string, object> dataCasted = Utility.Utility.ToDictionary(data);
             foreach(Component c in components)
             {
-                (c.script as BaseEntityComponent).enabled = (c.defaultStateValue);
-                (c.script as BaseEntityComponent).Initialize(dataCasted);
+                c.script.enabled = true;
+                c.script.Initialize(dataCasted);
             }
             #if UNITY_EDITOR
                 if(components.Count > 0) Debug.Log("Components Setup Completed");
@@ -50,7 +58,7 @@ namespace DemGFramework.Core {
         {
             foreach(Component c in components)
             {
-                (c.script as BaseEntityComponent).LoadFromData();
+                c.script.LoadFromData();
             }
         }
         public void ReinitializeDataOfComponent<TProperty>(string type, TProperty data) {
@@ -58,19 +66,19 @@ namespace DemGFramework.Core {
             Component component = components.Find(c => c.type == type);
             if (component != null)
             {
-                (component.script as BaseEntityComponent).LoadNewData(dataCasted);
+                component.script.LoadNewData(dataCasted);
             }
         }
         public void CanPlayAllComponent() {
             foreach(Component c in components)
             {
-                (c.script as BaseEntityComponent).SetCanPlay(true);
+                c.script.SetCanPlay(true);
             }
         }
         public void NotCanPlayAllComponent() {
             foreach(Component c in components)
             {
-                (c.script as BaseEntityComponent).SetCanPlay(false);
+                c.script.SetCanPlay(false);
             }
         }
     }
@@ -79,7 +87,6 @@ namespace DemGFramework.Core {
     public class Component
     {
         public string type;
-        public MonoBehaviour script;
-        public bool defaultStateValue;
+        public BaseEntityComponent script;
     }
 }
