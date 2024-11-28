@@ -21,15 +21,15 @@ namespace DemGFramework.Core
         public virtual void Initialize<TProperty>(TProperty properties) {
             components.InitializeComponents(scripts);
             this.properties = Utility.Utility.ToDictionary(properties);
+            DefaultSetup<TProperty>(properties);
+        }
+        public virtual void DefaultSetup<TProperty>(TProperty properties) {
             components.DefaultSetup<TProperty>(properties);
         }
-        public virtual void DefaultSetup<TState, TProperty>(TState state, TProperty properties) {
-            components.DefaultSetup<TProperty>(properties);
-        }
-        public void SetNewConfigurationFor<TState, TProperty>(string type, TProperty data) {
+        public void SetNewConfigurationFor<TProperty>(string type, TProperty data) {
             components.ReinitializeDataOfComponent<TProperty>(type, data);
         }
-        public void ResetConfigurationAtDefaultFor<TState, TProperty>(string type, TProperty properties) {
+        public void ResetConfigurationAtDefaultFor<TProperty>(string type, TProperty properties) {
             components.ReinitializeDataOfComponent<TProperty>(type, properties);
         }
     }
