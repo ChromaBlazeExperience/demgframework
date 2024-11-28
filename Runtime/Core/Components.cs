@@ -45,10 +45,6 @@ namespace DemGFramework.Core {
         public void DefaultSetup<TProperty>(TProperty data)
         {
             Dictionary<string, object> dataCasted = Utility.Utility.ToDictionary(data);
-            foreach (KeyValuePair<string, object> kvp in dataCasted)
-            {
-                Debug.Log($"Chiave = {kvp.Key}, Valore = {kvp.Value}");
-            }
             foreach(Component c in components)
             {
                 c.script.enabled = true;
