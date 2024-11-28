@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace DemGFramework.Core {
@@ -44,6 +45,7 @@ namespace DemGFramework.Core {
         public void DefaultSetup<TProperty>(TProperty data)
         {
             Dictionary<string, object> dataCasted = Utility.Utility.ToDictionary(data);
+            Debug.Log("Default Setup: " + dataCasted.Concat(dataCasted).ToString());
             foreach(Component c in components)
             {
                 c.script.enabled = true;

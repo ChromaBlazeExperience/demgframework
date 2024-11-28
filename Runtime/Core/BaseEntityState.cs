@@ -20,7 +20,6 @@ namespace DemGFramework.Core
         
         public virtual void Initialize<TProperty>(TProperty properties) {
             components.InitializeComponents(scripts);
-            this.properties = Utility.Utility.ToDictionary(properties);
             DefaultSetup<TProperty>(properties);
         }
         public virtual void DefaultSetup<TProperty>(TProperty properties) {
