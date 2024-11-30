@@ -8,10 +8,10 @@ namespace DemGFramework.Core
     public class BaseEntityComponent: MonoBehaviour {
         protected Dictionary<string, object> data;
         public bool readyToWork = false;
-        public bool canPlay = false;
+        public bool canPlay;
 
         #region UNITY EVENTS
-            public void _Destroy(GameObject obj)
+        public void _Destroy(GameObject obj)
             {
                 Destroy(obj);
             }
