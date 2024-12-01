@@ -14,6 +14,8 @@ namespace DemGFramework.Core
         [TabGroup("Components")]
         public Components components = new Components();
 
+        protected Dictionary<string, Action> stateInjections = new Dictionary<string, Action>();
+
         //NOTA: i components sono utili al momento solo per fare il reload delle properties che potremmo automatizzare da codice
         //prendendo tutti gli entitycomponent in scripts e facendo il load/reload delle properties .
         
@@ -29,6 +31,20 @@ namespace DemGFramework.Core
         }
         public void ResetConfigurationAtDefaultFor<TProperty>(string type, TProperty properties) {
             components.ReinitializeDataOfComponent<TProperty>(type, properties);
+        }
+
+        public void AddNewInjection(string stateName, Action stateInjection) {
+            stateInjections.Add(stateName, stateInjection);
+        }
+        public void RemoveInjection(string stateName) {
+            if (stateInjections.ContainsKey(stateName)) {
+                stateInjections.Remove(stateName);
+            }
+        }
+        public void InjectState(string stateName) {
+            if (stateInjections.ContainsKey(stateName)) {
+                stateInjections[stateName].Invoke();
+            }
         }
     }
 }
