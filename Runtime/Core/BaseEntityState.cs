@@ -41,9 +41,10 @@ namespace DemGFramework.Core
                 stateInjections.Remove(stateName);
             }
         }
-        public void InjectState(string stateName) {
+        public void InjectState(string stateName, object[] parameters) {
             if (stateInjections.ContainsKey(stateName)) {
-                stateInjections[stateName].Invoke();
+                if(parameters.Length > 0) stateInjections[stateName].DynamicInvoke(parameters);
+                else stateInjections[stateName].Invoke();
             }
         }
     }
