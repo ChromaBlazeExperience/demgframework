@@ -34,6 +34,9 @@ namespace DemGFramework.Core
         }
 
         public void AddNewInjection(string stateName, Action<dynamic> stateInjection) {
+            if(stateInjections.ContainsKey(stateName)) {
+                return;
+            }   
             stateInjections.Add(stateName, stateInjection);
         }
         public void RemoveInjection(string stateName) {
