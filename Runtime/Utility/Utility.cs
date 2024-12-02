@@ -13,6 +13,7 @@ namespace DemGFramework.Utility
         public delegate void BoolAction(bool value);
         public delegate void VoidAction();
         public delegate void FloatAction(float value);
+        public delegate void StringAction(string value);
 
         public static float NormalizeAngle(float angle)
         {
