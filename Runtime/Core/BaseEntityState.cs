@@ -16,9 +16,6 @@ namespace DemGFramework.Core
 
         protected Dictionary<string, Action<dynamic>> stateInjections = new Dictionary<string, Action<dynamic>>();
 
-        //NOTA: i components sono utili al momento solo per fare il reload delle properties che potremmo automatizzare da codice
-        //prendendo tutti gli entitycomponent in scripts e facendo il load/reload delle properties .
-        
         public virtual void Initialize<TProperty>(TProperty properties) {
             components.InitializeComponents(scripts);
             DefaultSetup<TProperty>(properties);
