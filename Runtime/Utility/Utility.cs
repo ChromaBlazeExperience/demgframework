@@ -53,6 +53,9 @@ namespace DemGFramework.Utility
         private static readonly HashSet<Type> exceptionTypes = new HashSet<Type>
     {
         typeof(LayerMask),
+        typeof(AnimationCurve),
+        typeof(AudioClip),
+        typeof(Color)
     };
 
         public static Dictionary<string, object> ToDictionary(object obj, HashSet<object> processedObjects = null)
