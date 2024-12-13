@@ -29,7 +29,6 @@ namespace DemGFramework.Core
         public void ResetConfigurationAtDefaultFor<TProperty>(string type, TProperty properties) {
             components.ReinitializeDataOfComponent<TProperty>(type, properties);
         }
-
         public void AddNewInjection(string stateName, Action<dynamic> stateInjection) {
             if(stateInjections.ContainsKey(stateName)) {
                 return;

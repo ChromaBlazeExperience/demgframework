@@ -59,10 +59,12 @@ namespace DemGFramework.Core {
         {
             return components.Find(c => c.type == type);
         }
-        public void ReloadData()
+        public void ReloadData<TProperty>(TProperty data)
         {
+            Dictionary<string, object> dataCasted = Utility.Utility.ToDictionary(data);
             foreach(Component c in components)
             {
+                c.script.SetNewData(dataCasted);
                 c.script.LoadFromData();
             }
         }
