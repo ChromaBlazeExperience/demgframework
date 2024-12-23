@@ -117,5 +117,46 @@ namespace DemGFramework.Utility
             // Oggetti complessi
             return ToDictionary(value, processedObjects);
         }
+    
+    
+        #region FIND ALL TYPE OF OBJECT RECURSIVELY IN A PARENT
+
+            public static List<T> FindAllObjectsOfTypeInParent<T>(Transform parent)
+            {
+                //get all flatted children
+                List<Transform> children = GetAllChildrenFlat(parent);
+                List<T> objects = new List<T>();
+                foreach (Transform child in children)
+                {
+                    T obj = child.GetComponent<T>();
+                    if (obj != null)
+                    {
+                        objects.Add(obj);
+                    }
+                }
+                return objects;
+            }
+            public static List<Transform> GetAllChildrenFlat(Transform parent)
+            {
+                List<Transform> children = new List<Transform>();
+                TraverseHierarchy(parent, children);
+                return children;
+            }
+            private static void TraverseHierarchy(Transform current, List<Transform> children)
+            {
+                foreach (Transform child in current)
+                {
+                    children.Add(child);
+                    TraverseHierarchy(child, children); // Chiamata ricorsiva
+                }
+            }
+
+        #endregion
+    
+    
     }
+
+
+
+    
 }
