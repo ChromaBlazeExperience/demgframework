@@ -128,10 +128,8 @@ namespace DemGFramework.Utility
                 List<T> objects = new List<T>();
                 foreach (Transform child in children)
                 {
-                    T obj = child.GetComponent<T>();
-                    if (obj != null)
-                    {
-                        objects.Add(obj);
+                    if(child.TryGetComponent<T>(out T component)) {
+                        objects.Add(component);
                     }
                 }
                 return objects;
