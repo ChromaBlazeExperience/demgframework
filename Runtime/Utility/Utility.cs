@@ -54,6 +54,7 @@ namespace DemGFramework.Utility
     {
         typeof(LayerMask),
         typeof(AnimationCurve),
+        typeof(AnimationClip),
         typeof(AudioClip),
         typeof(Color)
     };
