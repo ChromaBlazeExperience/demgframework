@@ -56,7 +56,7 @@ namespace DemGFramework.Utility
         typeof(AnimationCurve),
         typeof(AnimationClip),
         typeof(AudioClip),
-        typeof(AudioClip[])
+        typeof(AudioClip[]),
         typeof(Color)
     };
 
