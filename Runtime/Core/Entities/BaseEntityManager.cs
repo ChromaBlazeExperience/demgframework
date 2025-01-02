@@ -12,7 +12,7 @@ namespace DemGFramework.Core
         public TProperty properties;
 
         public virtual void Awake() {
-            (state as BaseEntityState).Initialize<TProperty>(properties);
+            (state as BaseEntityState).Initialize<TProperty>(properties); 
         }
         public virtual void ReloadData() {
             (state as BaseEntityState).components.ReloadData<TProperty>(properties);
