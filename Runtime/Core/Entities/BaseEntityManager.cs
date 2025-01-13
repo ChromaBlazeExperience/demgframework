@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DemGFramework.Core
 {
-    public class BaseEntityManager<TState, TProperty> : MonoBehaviour
+    public class BaseEntityManager<TState, TProperty> : MonoBehaviour where TState : BaseEntityState
     {
         [TabGroup("Base State")]
         public TState state;
