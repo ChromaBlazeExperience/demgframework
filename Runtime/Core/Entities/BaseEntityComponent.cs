@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Data = System.Collections.Generic.Dictionary<string, object>;
-
+//
 namespace DemGFramework.Core
 {
     public class BaseEntityComponent: MonoBehaviour {
