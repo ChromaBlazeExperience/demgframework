@@ -1,0 +1,2 @@
+Questo foglio serve esclusivamente a tenere in memoria per tutti i componenti quali sono gli script associati.
+(Da quelli custom a quelli come il rigidbody, collider, etc..)

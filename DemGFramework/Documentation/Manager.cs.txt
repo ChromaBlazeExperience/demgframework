@@ -1,0 +1,2 @@
+File che si occupa di: gestione input, gestione eventi (ex: nemico ti attacca, entri in una zona dove cambia la fisica, etc..)
+bridge fra componenti, dependencies e logiche

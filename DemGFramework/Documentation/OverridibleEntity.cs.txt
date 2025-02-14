@@ -1,0 +1,5 @@
+Per alcune classi come per esempio il BaseMono/Manager, 
+è possibile fare un extend per poter ereditare delle funzionalità
+e per estenderle con altro
+
+IDEM x Components ad esempio
