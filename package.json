@@ -1,6 +1,6 @@
 {
     "name": "com.chromablazeexperience.demgframework",
-    "version": "1.0.68",
+    "version": "1.0.69",
     "displayName": "DemGFramework",
     "description": "Chroma Blaze Game Framework.",
     "unity": "2022.3",
