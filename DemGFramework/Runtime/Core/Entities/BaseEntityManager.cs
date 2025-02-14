@@ -1,6 +1,5 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
-//
 namespace DemGFramework.Core
 {
     public class BaseEntityManager<TState, TProperty> : MonoBehaviour where TState : BaseEntityState
