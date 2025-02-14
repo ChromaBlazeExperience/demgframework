@@ -1,4 +1,0 @@
-//TODO: Fare un sistema di input
-che sia atomico e permetta di gestire sia gli input legacy che del new input system
-permettendo aggancio dinamiche di azioni configurabili e la possibilità di un menu
-di keybinding

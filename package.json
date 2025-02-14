@@ -1,6 +1,6 @@
 {
     "name": "com.chromablazeexperience.demgframework",
-    "version": "1.0.64",
+    "version": "1.0.66",
     "displayName": "DemGFramework",
     "description": "Chroma Blaze Game Framework.",
     "unity": "2022.3",
@@ -10,7 +10,8 @@
     },
     "dependencies": {
         "com.unity.inputsystem": "1.7.0",
-        "com.unity.visualscripting": "1.9.4 "
+        "com.unity.visualscripting": "1.9.4",
+        "sirenix": "3.3.1.11"
     },
     "keywords": [
         "unity",
@@ -22,6 +23,6 @@
         "url": "https://github.com/yourcompany/yourpackage.git"
     },
     "scripts": {
-        "release": "git add . && git commit -m \"Modified files\" && npm version patch -m \"New release %s\" && git push && git push --tags"
+        "release": "git add . && git commit -m \"Modified files\" && npm version patch -m \"New release %s\" && git push && git push --tags && npm publish --registry http://localhost:4873"
     }
 }
